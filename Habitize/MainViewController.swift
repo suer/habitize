@@ -13,10 +13,22 @@ class MainViewController: UITableViewController {
             "habit5"
         ]
     ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
         title = "Habitize"
+
+        loadAddButton()
+    }
+
+    // MARK: add button
+
+    func loadAddButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("addButtonTapped"))
+    }
+
+    func addButtonTapped() {
     }
 
     // MARK: table view
