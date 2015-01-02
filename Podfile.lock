@@ -1,0 +1,26 @@
+PODS:
+  - MagicalRecord (2.2):
+    - MagicalRecord/Core (= 2.2)
+  - MagicalRecord/Core (2.2)
+  - RMUniversalAlert (0.2):
+    - RMUniversalAlert/Core (= 0.2)
+  - RMUniversalAlert/Core (0.2):
+    - UIActionSheet+Blocks
+    - UIAlertController+Blocks
+    - UIAlertView+Blocks
+  - UIActionSheet+Blocks (0.8.1)
+  - UIAlertController+Blocks (0.6)
+  - UIAlertView+Blocks (0.8.1)
+
+DEPENDENCIES:
+  - MagicalRecord
+  - RMUniversalAlert
+
+SPEC CHECKSUMS:
+  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  RMUniversalAlert: ff46aaf26cfa287668fbceaf66a2187d18497eae
+  UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
+  UIAlertController+Blocks: 0ffd52ca8c54fb9b648f841a0ba3e9b16ec09b73
+  UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
+
+COCOAPODS: 0.35.0
