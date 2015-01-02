@@ -19,7 +19,7 @@ class EditHabitViewController: UIViewController {
 
     private func loadTriggerForm() {
         let label = UILabel()
-        label.text = "Trigger"
+        label.text = NSLocalizedString("Trigger", comment: "")
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(label)
         view.addConstraints([
@@ -46,7 +46,7 @@ class EditHabitViewController: UIViewController {
 
     private func loadHabitForm() {
         let label = UILabel()
-        label.text = "Habit"
+        label.text = NSLocalizedString("Habit", comment: "")
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(label)
         view.addConstraints([

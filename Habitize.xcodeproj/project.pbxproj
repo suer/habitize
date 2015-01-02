@@ -15,6 +15,7 @@
 		80B528961A5507C600172517 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B528951A5507C600172517 /* MainViewController.swift */; };
 		80C0424E1A559A290054425B /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0424D1A559A290054425B /* EditHabitViewController.swift */; };
 		80C042501A56CE4D0054425B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80C0424F1A56CE4C0054425B /* Settings.bundle */; };
+		80C042561A56DDFE0054425B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80C042581A56DDFE0054425B /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		80B528951A5507C600172517 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../habitize/Habitize/MainViewController.swift; sourceTree = "<group>"; };
 		80C0424D1A559A290054425B /* EditHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
 		80C0424F1A56CE4C0054425B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		80C042571A56DDFE0054425B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		80C0425B1A56DE3B0054425B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9191E597239B635894E9F127 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B4AF469CE1BB518E2615104E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -102,6 +105,7 @@
 				8010AE691A550693004FF986 /* LaunchScreen.xib */,
 				8010AE5E1A550692004FF986 /* Supporting Files */,
 				80C0424F1A56CE4C0054425B /* Settings.bundle */,
+				80C042581A56DDFE0054425B /* Localizable.strings */,
 			);
 			path = Habitize;
 			sourceTree = "<group>";
@@ -205,6 +209,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 8010AE521A550692004FF986;
 			productRefGroup = 8010AE5C1A550692004FF986 /* Products */;
@@ -223,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8010AE6B1A550693004FF986 /* LaunchScreen.xib in Resources */,
+				80C042561A56DDFE0054425B /* Localizable.strings in Resources */,
 				80C042501A56CE4D0054425B /* Settings.bundle in Resources */,
 				8010AE681A550693004FF986 /* Images.xcassets in Resources */,
 			);
@@ -319,6 +325,15 @@
 				8010AE6A1A550693004FF986 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		80C042581A56DDFE0054425B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80C042571A56DDFE0054425B /* en */,
+				80C0425B1A56DE3B0054425B /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
