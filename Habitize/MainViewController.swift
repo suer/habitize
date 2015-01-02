@@ -60,5 +60,15 @@ class MainViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        RMUniversalAlert.showActionSheetInViewController(self,
+            withTitle: "",
+            message: "",
+            cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
+            destructiveButtonTitle: nil,
+            otherButtonTitles: [NSLocalizedString("Edit", comment: ""), NSLocalizedString("Count up", comment: "")],
+            tapBlock: {
+                index in
+                return
+        })
     }
 }
