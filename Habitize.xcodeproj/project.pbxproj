@@ -12,6 +12,7 @@
 		8010AE6B1A550693004FF986 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8010AE691A550693004FF986 /* LaunchScreen.xib */; };
 		8010AE771A550693004FF986 /* HabitizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010AE761A550693004FF986 /* HabitizeTests.swift */; };
 		80B528961A5507C600172517 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B528951A5507C600172517 /* MainViewController.swift */; };
+		80C0424E1A559A290054425B /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0424D1A559A290054425B /* EditHabitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		8010AE751A550693004FF986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8010AE761A550693004FF986 /* HabitizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitizeTests.swift; sourceTree = "<group>"; };
 		80B528951A5507C600172517 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../habitize/Habitize/MainViewController.swift; sourceTree = "<group>"; };
+		80C0424D1A559A290054425B /* EditHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				8010AE601A550692004FF986 /* AppDelegate.swift */,
 				80B528951A5507C600172517 /* MainViewController.swift */,
+				80C0424D1A559A290054425B /* EditHabitViewController.swift */,
 				8010AE671A550693004FF986 /* Images.xcassets */,
 				8010AE691A550693004FF986 /* LaunchScreen.xib */,
 				8010AE5E1A550692004FF986 /* Supporting Files */,
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C0424E1A559A290054425B /* EditHabitViewController.swift in Sources */,
 				8010AE611A550692004FF986 /* AppDelegate.swift in Sources */,
 				80B528961A5507C600172517 /* MainViewController.swift in Sources */,
 			);

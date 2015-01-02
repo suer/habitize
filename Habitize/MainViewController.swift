@@ -16,10 +16,14 @@ class MainViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.whiteColor()
         title = "Habitize"
-
+        view.backgroundColor = UIColor.whiteColor()
         loadAddButton()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
     }
 
     // MARK: add button
@@ -29,6 +33,9 @@ class MainViewController: UITableViewController {
     }
 
     func addButtonTapped() {
+        let controller = UINavigationController(rootViewController: EditHabitViewController())
+        self.modalTransitionStyle = .CoverVertical
+        presentViewController(controller, animated: true, completion: nil)
     }
 
     // MARK: table view
@@ -47,8 +54,7 @@ class MainViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
-        let title = exampleData.values.array[indexPath.section][indexPath.row]
-        cell.textLabel?.text = title
+        cell.textLabel?.text = exampleData.values.array[indexPath.section][indexPath.row]
         return cell
     }
 
