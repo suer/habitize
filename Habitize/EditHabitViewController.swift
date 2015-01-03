@@ -3,6 +3,7 @@ import UIKit
 class EditHabitViewController: UIViewController {
 
     let rowHeight = CGFloat(44.0)
+    let editHabitDataModel = EditHabitViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +41,18 @@ class EditHabitViewController: UIViewController {
             NSLayoutConstraint(item: textField, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 2),
             NSLayoutConstraint(item: textField, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0)
             ])
+        textField.addTarget(self, action: Selector("triggerChanged:"), forControlEvents: .EditingChanged)
+
+    }
+
+    func triggerChanged(textField: UITextField) {
+        editHabitDataModel.triggerName = textField.text
     }
 
     // MARK: habit
 
     private func loadHabitForm() {
+        let rect = (width: 10, height: 11)
         let label = UILabel()
         label.text = NSLocalizedString("Habit", comment: "")
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -67,6 +75,11 @@ class EditHabitViewController: UIViewController {
             NSLayoutConstraint(item: textField, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 4.0),
             NSLayoutConstraint(item: textField, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0)
             ])
+        textField.addTarget(self, action: Selector("habitChanged:"), forControlEvents: .EditingChanged)
+    }
+
+    func habitChanged(textField: UITextField) {
+        editHabitDataModel.habitName = textField.text
     }
 
     // MARK: cancel button
@@ -84,6 +97,7 @@ class EditHabitViewController: UIViewController {
     }
 
     func saveButtonTapped() {
+        editHabitDataModel.save()
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

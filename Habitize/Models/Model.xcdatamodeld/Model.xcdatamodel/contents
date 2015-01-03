@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Habit" representedClassName="Habit" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="trigger" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trigger" inverseName="habits" inverseEntity="Trigger" syncable="YES"/>
+    </entity>
+    <entity name="Trigger" representedClassName="Trigger" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="habits" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Habit" inverseName="trigger" inverseEntity="Habit" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Trigger" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Habit" positionX="-54" positionY="0" width="128" height="118"/>
+    </elements>
+</model>
