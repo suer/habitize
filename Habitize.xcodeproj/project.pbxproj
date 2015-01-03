@@ -17,9 +17,9 @@
 		80C042501A56CE4D0054425B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80C0424F1A56CE4C0054425B /* Settings.bundle */; };
 		80C042561A56DDFE0054425B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80C042581A56DDFE0054425B /* Localizable.strings */; };
 		80C042621A57CEE80054425B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80C042601A57CEE80054425B /* Model.xcdatamodeld */; };
-		80C042641A57CFF70054425B /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C042631A57CFF70054425B /* Habit.swift */; };
-		80C042661A57CFF80054425B /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C042651A57CFF80054425B /* Trigger.swift */; };
 		80C042681A57D2940054425B /* EditHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C042671A57D2940054425B /* EditHabitViewModel.swift */; };
+		80C0426C1A5849B30054425B /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0426B1A5849B30054425B /* Habit.swift */; };
+		80C0426E1A584C8D0054425B /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0426D1A584C8D0054425B /* HabitsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,9 +49,9 @@
 		80C0425B1A56DE3B0054425B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80C0425C1A5762460054425B /* Habitize-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Habitize-Bridging-Header.h"; sourceTree = "<group>"; };
 		80C042611A57CEE80054425B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		80C042631A57CFF70054425B /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Habit.swift; path = Models/Habit.swift; sourceTree = "<group>"; };
-		80C042651A57CFF80054425B /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trigger.swift; path = Models/Trigger.swift; sourceTree = "<group>"; };
 		80C042671A57D2940054425B /* EditHabitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitViewModel.swift; sourceTree = "<group>"; };
+		80C0426B1A5849B30054425B /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Habit.swift; path = Models/Habit.swift; sourceTree = "<group>"; };
+		80C0426D1A584C8D0054425B /* HabitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		9191E597239B635894E9F127 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B4AF469CE1BB518E2615104E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,6 +110,7 @@
 				80C0425F1A57CEB10054425B /* Models */,
 				8010AE601A550692004FF986 /* AppDelegate.swift */,
 				80B528951A5507C600172517 /* MainViewController.swift */,
+				80C0426D1A584C8D0054425B /* HabitsViewController.swift */,
 				80C0424D1A559A290054425B /* EditHabitViewController.swift */,
 				80C042671A57D2940054425B /* EditHabitViewModel.swift */,
 				8010AE671A550693004FF986 /* Images.xcassets */,
@@ -151,8 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				80C042601A57CEE80054425B /* Model.xcdatamodeld */,
-				80C042651A57CFF80054425B /* Trigger.swift */,
-				80C042631A57CFF70054425B /* Habit.swift */,
+				80C0426B1A5849B30054425B /* Habit.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -316,12 +316,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C0426C1A5849B30054425B /* Habit.swift in Sources */,
 				80C0424E1A559A290054425B /* EditHabitViewController.swift in Sources */,
-				80C042641A57CFF70054425B /* Habit.swift in Sources */,
+				80C0426E1A584C8D0054425B /* HabitsViewController.swift in Sources */,
 				80C042681A57D2940054425B /* EditHabitViewModel.swift in Sources */,
 				8010AE611A550692004FF986 /* AppDelegate.swift in Sources */,
 				80B528961A5507C600172517 /* MainViewController.swift in Sources */,
-				80C042661A57CFF80054425B /* Trigger.swift in Sources */,
 				80C042621A57CEE80054425B /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

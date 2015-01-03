@@ -14,6 +14,8 @@ class MainViewController: UITableViewController {
         ]
     ]
 
+    let habitsViewModel = HabitsViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Habitize"
@@ -23,6 +25,7 @@ class MainViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        habitsViewModel.fetch()
         tableView.reloadData()
     }
 
@@ -41,20 +44,25 @@ class MainViewController: UITableViewController {
     // MARK: table view
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return exampleData.count
+        println(habitsViewModel.fetchedResultsController.sections?.count)
+        return habitsViewModel.fetchedResultsController.sections?.count ?? 0
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return exampleData.keys.array[section]
+        println(habitsViewModel.fetchedResultsController.sections?[section].name)
+        return habitsViewModel.fetchedResultsController.sections?[section].name ?? ""
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exampleData.values.array[section].count
+        let sectionInfo: AnyObject? = habitsViewModel.fetchedResultsController.sections?[section]
+        return sectionInfo?.numberOfObjects ?? 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = exampleData.values.array[indexPath.section][indexPath.row]
+        let habit = habitsViewModel.fetchedResultsController.objectAtIndexPath(indexPath) as Habit
+        let cell = UITableViewCell(style: .Value1, reuseIdentifier: "Cell")
+        cell.textLabel?.text = habit.name
+        cell.detailTextLabel?.text = habit.count.stringValue
         return cell
     }
 
