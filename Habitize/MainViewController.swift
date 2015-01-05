@@ -2,18 +2,6 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
-    let exampleData = [
-        "Trigger1": [
-            "habit1",
-            "habit2"
-        ],
-        "Trigger2": [
-            "habit3",
-            "habit4",
-            "habit5"
-        ]
-    ]
-
     let habitsViewModel = HabitsViewModel()
 
     override func viewDidLoad() {
@@ -44,12 +32,10 @@ class MainViewController: UITableViewController {
     // MARK: table view
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        println(habitsViewModel.fetchedResultsController.sections?.count)
         return habitsViewModel.fetchedResultsController.sections?.count ?? 0
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        println(habitsViewModel.fetchedResultsController.sections?[section].name)
         return habitsViewModel.fetchedResultsController.sections?[section].name ?? ""
     }
 
@@ -68,6 +54,8 @@ class MainViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let habit = habitsViewModel.fetchedResultsController.objectAtIndexPath(indexPath) as Habit
+        let editHabitViewModel = EditHabitViewModel(habit: habit)
         RMUniversalAlert.showActionSheetInViewController(self,
             withTitle: "",
             message: "",
@@ -76,7 +64,20 @@ class MainViewController: UITableViewController {
             otherButtonTitles: [NSLocalizedString("Edit", comment: ""), NSLocalizedString("Count up", comment: "")],
             tapBlock: {
                 index in
+                switch index {
+                case UIAlertControllerBlocksFirstOtherButtonIndex:
+                    self.presentHabitViewController(editHabitViewModel)
+                default:
+                    break
+                }
                 return
         })
     }
+
+    func presentHabitViewController(editHabitViewModel: EditHabitViewModel) {
+        let controller = UINavigationController(rootViewController: EditHabitViewController(editHabitViewModel: editHabitViewModel))
+        self.modalTransitionStyle = .CoverVertical
+        presentViewController(controller, animated: true, completion: nil)
+    }
+
 }

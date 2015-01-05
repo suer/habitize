@@ -15,6 +15,9 @@ PODS:
 DEPENDENCIES:
   - MagicalRecord
   - RMUniversalAlert
+  - UIActionSheet+Blocks (= 0.8.1)
+  - UIAlertController+Blocks (= 0.6)
+  - UIAlertView+Blocks (= 0.8.1)
 
 SPEC CHECKSUMS:
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224

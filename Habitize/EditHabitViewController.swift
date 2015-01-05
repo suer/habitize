@@ -3,7 +3,20 @@ import UIKit
 class EditHabitViewController: UIViewController {
 
     let rowHeight = CGFloat(44.0)
-    let editHabitDataModel = EditHabitViewModel()
+    let editHabitViewModel: EditHabitViewModel
+
+    override convenience init() {
+        self.init(editHabitViewModel: EditHabitViewModel())
+    }
+
+    init(editHabitViewModel: EditHabitViewModel) {
+        self.editHabitViewModel = editHabitViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +47,7 @@ class EditHabitViewController: UIViewController {
         textField.setTranslatesAutoresizingMaskIntoConstraints(false)
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        textField.text = editHabitViewModel.triggerName
         view.addSubview(textField)
         view.addConstraints([
             NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight),
@@ -46,7 +60,7 @@ class EditHabitViewController: UIViewController {
     }
 
     func triggerChanged(textField: UITextField) {
-        editHabitDataModel.triggerName = textField.text
+        editHabitViewModel.triggerName = textField.text
     }
 
     // MARK: habit
@@ -68,6 +82,7 @@ class EditHabitViewController: UIViewController {
         textField.setTranslatesAutoresizingMaskIntoConstraints(false)
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        textField.text = editHabitViewModel.habitName
         view.addSubview(textField)
         view.addConstraints([
             NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 3.0),
@@ -79,7 +94,7 @@ class EditHabitViewController: UIViewController {
     }
 
     func habitChanged(textField: UITextField) {
-        editHabitDataModel.habitName = textField.text
+        editHabitViewModel.habitName =  textField.text
     }
 
     // MARK: cancel button
@@ -88,6 +103,7 @@ class EditHabitViewController: UIViewController {
     }
 
     func cancelButtonTapped() {
+        NSManagedObjectContext.MR_defaultContext().rollback()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -97,7 +113,7 @@ class EditHabitViewController: UIViewController {
     }
 
     func saveButtonTapped() {
-        editHabitDataModel.save()
+        editHabitViewModel.save()
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

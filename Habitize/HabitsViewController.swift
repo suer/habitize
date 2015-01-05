@@ -6,12 +6,12 @@ class HabitsViewModel: NSObject {
     override init() {
         let request = NSFetchRequest(entityName: "Habit")
         let nameSortDescripter = NSSortDescriptor(key: "name", ascending: true)
-        let triggerNameSortDescripter = NSSortDescriptor(key: "triggerName", ascending: true)
+        let triggerNameSortDescripter = NSSortDescriptor(key: "trigger", ascending: true)
         request.sortDescriptors = [triggerNameSortDescripter, nameSortDescripter]
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: request,
             managedObjectContext: NSManagedObjectContext.MR_defaultContext(),
-            sectionNameKeyPath: "triggerName",
+            sectionNameKeyPath: "trigger",
             cacheName: "Habit")
         super.init()
     }
