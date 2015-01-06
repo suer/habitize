@@ -4,20 +4,15 @@ class HabitsViewModel: NSObject {
     var fetchedResultsController: NSFetchedResultsController
 
     override init() {
-        let request = NSFetchRequest(entityName: "Habit")
-        let nameSortDescripter = NSSortDescriptor(key: "name", ascending: true)
-        let triggerNameSortDescripter = NSSortDescriptor(key: "trigger", ascending: true)
-        request.sortDescriptors = [triggerNameSortDescripter, nameSortDescripter]
-        fetchedResultsController = NSFetchedResultsController(
-            fetchRequest: request,
-            managedObjectContext: NSManagedObjectContext.MR_defaultContext(),
-            sectionNameKeyPath: "trigger",
-            cacheName: "Habit")
+        fetchedResultsController = Habit.MR_fetchAllGroupedBy("trigger", withPredicate: NSPredicate(format: "1 = 1"), sortedBy: "trigger", ascending: true)
         super.init()
     }
 
     func fetch() {
         var error: NSError? = nil
         fetchedResultsController.performFetch(&error)
+        if error != nil {
+            println(error)
+        }
     }
 }
