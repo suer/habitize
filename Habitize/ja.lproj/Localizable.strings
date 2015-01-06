@@ -1,6 +1,7 @@
 "Trigger" = "何をしたとき?";
-"Habit" = "何をしたする?";
+"Habit" = "何をする?";
 
 "Edit" = "編集";
 "Count up" = "カウントアップ";
 "Cancel" = "キャンセル";
+"Complete" = "完了";

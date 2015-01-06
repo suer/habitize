@@ -3,10 +3,10 @@ import Foundation
 class EditHabitViewModel: NSObject {
     dynamic var triggerName = ""
     dynamic var habitName = ""
-    var habit: Habit
+    var habit: Habit?
 
-    override convenience init() {
-        self.init(habit: Habit.MR_createEntity() as Habit)
+    override init() {
+        super.init()
     }
 
     init(habit: Habit) {
@@ -17,8 +17,11 @@ class EditHabitViewModel: NSObject {
     }
 
     func save() {
-        habit.name = habitName
-        habit.trigger = triggerName
+        if habit == nil {
+            habit = Habit.MR_createEntity() as? Habit
+        }
+        habit!.name = habitName
+        habit!.trigger = triggerName
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
 }

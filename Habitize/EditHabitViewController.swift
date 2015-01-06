@@ -4,6 +4,7 @@ class EditHabitViewController: UIViewController {
 
     let rowHeight = CGFloat(44.0)
     let editHabitViewModel: EditHabitViewModel
+    let triggerTextField = UITextField()
 
     override convenience init() {
         self.init(editHabitViewModel: EditHabitViewModel())
@@ -29,6 +30,11 @@ class EditHabitViewController: UIViewController {
         loadSaveButton()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        triggerTextField.text = editHabitViewModel.triggerName
+    }
+
     // MARK: trigger
 
     private func loadTriggerForm() {
@@ -43,24 +49,25 @@ class EditHabitViewController: UIViewController {
             NSLayoutConstraint(item: label, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0)
             ])
 
-        let textField = UITextField()
-        textField.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGrayColor().CGColor
-        textField.text = editHabitViewModel.triggerName
-        view.addSubview(textField)
+        triggerTextField.setTranslatesAutoresizingMaskIntoConstraints(false)
+        triggerTextField.layer.borderWidth = 1
+        triggerTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        triggerTextField.text = editHabitViewModel.triggerName
+        view.addSubview(triggerTextField)
         view.addConstraints([
-            NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight),
-            NSLayoutConstraint(item: textField, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: textField, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 2),
-            NSLayoutConstraint(item: textField, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: triggerTextField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight),
+            NSLayoutConstraint(item: triggerTextField, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: triggerTextField, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 2),
+            NSLayoutConstraint(item: triggerTextField, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0)
             ])
-        textField.addTarget(self, action: Selector("triggerChanged:"), forControlEvents: .EditingChanged)
-
+        triggerTextField.addTarget(self, action: Selector("triggerTapped:"), forControlEvents: .EditingDidBegin)
     }
 
-    func triggerChanged(textField: UITextField) {
-        editHabitViewModel.triggerName = textField.text
+    func triggerTapped(textField: UITextField) {
+        textField.resignFirstResponder()
+        let controller = UINavigationController(rootViewController: EditTextFieldViewController(labelText: NSLocalizedString("Trigger", comment: ""), editHabitViewModel: editHabitViewModel))
+        self.modalTransitionStyle = .CoverVertical
+        presentViewController(controller, animated: false, completion: nil)
     }
 
     // MARK: habit
