@@ -71,6 +71,8 @@ class EditTextFieldViewController: UIViewController, UITableViewDelegate, UITabl
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGrayColor().CGColor
         textField.text = editHabitViewModel.triggerName
+        textField.leftViewMode = .Always
+        textField.leftView = UIView(frame: CGRectMake(0, 0, 15, textField.bounds.height))
         view.addSubview(textField)
         view.addConstraints([
             NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight),

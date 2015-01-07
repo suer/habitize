@@ -53,6 +53,8 @@ class EditHabitViewController: UIViewController {
         triggerTextField.layer.borderWidth = 1
         triggerTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
         triggerTextField.text = editHabitViewModel.triggerName
+        triggerTextField.leftViewMode = .Always
+        triggerTextField.leftView = UIView(frame: CGRectMake(0, 0, 15, triggerTextField.bounds.height))
         view.addSubview(triggerTextField)
         view.addConstraints([
             NSLayoutConstraint(item: triggerTextField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight),
@@ -90,6 +92,9 @@ class EditHabitViewController: UIViewController {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGrayColor().CGColor
         textField.text = editHabitViewModel.habitName
+        textField.leftViewMode = .Always
+        textField.leftView = UIView(frame: CGRectMake(0, 0, 15, textField.bounds.height))
+
         view.addSubview(textField)
         view.addConstraints([
             NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 3.0),
