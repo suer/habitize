@@ -61,7 +61,7 @@ class MainViewController: UITableViewController {
             message: "",
             cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
             destructiveButtonTitle: nil,
-            otherButtonTitles: [NSLocalizedString("Edit", comment: ""), NSLocalizedString("Count up", comment: "")],
+            otherButtonTitles: [NSLocalizedString("Edit", comment: ""), NSLocalizedString("Delete", comment: "")],
             tapBlock: {
                 index in
                 switch index {
