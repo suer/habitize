@@ -67,6 +67,8 @@ class MainViewController: UITableViewController {
                 switch index {
                 case UIAlertControllerBlocksFirstOtherButtonIndex:
                     self.presentHabitViewController(editHabitViewModel)
+                case UIAlertControllerBlocksFirstOtherButtonIndex + 1:
+                    self.deleteRowWithConfirmation(indexPath)
                 default:
                     break
                 }
@@ -80,4 +82,32 @@ class MainViewController: UITableViewController {
         presentViewController(controller, animated: true, completion: nil)
     }
 
+    private func deleteRowWithConfirmation(indexPath: NSIndexPath) {
+        RMUniversalAlert.showAlertInViewController(self,
+            withTitle: NSLocalizedString("Confirmation", comment: ""),
+            message: NSLocalizedString("Are you sure you want to delete it?", comment: ""),
+            cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
+            destructiveButtonTitle: nil,
+            otherButtonTitles: [NSLocalizedString("Yes", comment: "")],
+            tapBlock: {
+                index in
+                switch index {
+                case UIAlertControllerBlocksFirstOtherButtonIndex:
+                    self.deleteRow(indexPath)
+                default:
+                    break
+                }
+            }
+        )
+    }
+
+    private func deleteRow(indexPath: NSIndexPath) {
+        tableView.beginUpdates()
+        habitsViewModel.deleteHabit(indexPath)
+        if tableView.numberOfRowsInSection(indexPath.section) == 1 {
+            tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
+        }
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.endUpdates()
+    }
 }

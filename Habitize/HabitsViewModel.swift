@@ -15,4 +15,11 @@ class HabitsViewModel: NSObject {
             println(error)
         }
     }
+
+    func deleteHabit(indexPath: NSIndexPath) {
+        let habit = fetchedResultsController.objectAtIndexPath(indexPath) as Habit
+        habit.MR_deleteEntity()
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        fetch()
+    }
 }
