@@ -114,7 +114,7 @@ class EditHabitViewController: UIViewController {
 
     // MARK: cancel button
     private func loadCancelButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: Selector("cancelButtonTapped"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: .Plain, target: self, action: Selector("cancelButtonTapped"))
     }
 
     func cancelButtonTapped() {
