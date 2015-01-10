@@ -110,4 +110,10 @@ class MainViewController: UITableViewController {
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         tableView.endUpdates()
     }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            deleteRowWithConfirmation(indexPath)
+        }
+    }
 }
