@@ -61,13 +61,17 @@ class MainViewController: UITableViewController {
             message: habit.name,
             cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
             destructiveButtonTitle: nil,
-            otherButtonTitles: [NSLocalizedString("Edit", comment: ""), NSLocalizedString("Delete", comment: "")],
+            otherButtonTitles: [NSLocalizedString("Edit", comment: ""), NSLocalizedString("Count Up", comment: ""), NSLocalizedString("Count Down", comment: ""), NSLocalizedString("Delete", comment: "")],
             tapBlock: {
                 index in
                 switch index {
                 case UIAlertControllerBlocksFirstOtherButtonIndex:
                     self.presentHabitViewController(editHabitViewModel)
                 case UIAlertControllerBlocksFirstOtherButtonIndex + 1:
+                    self.countUp(indexPath)
+                case UIAlertControllerBlocksFirstOtherButtonIndex + 2:
+                    self.countDown(indexPath)
+                case UIAlertControllerBlocksFirstOtherButtonIndex + 3:
                     self.deleteRowWithConfirmation(indexPath)
                 default:
                     break
@@ -80,6 +84,16 @@ class MainViewController: UITableViewController {
         let controller = UINavigationController(rootViewController: EditHabitViewController(editHabitViewModel: editHabitViewModel))
         self.modalTransitionStyle = .CoverVertical
         presentViewController(controller, animated: true, completion: nil)
+    }
+
+    private func countUp(indexPath: NSIndexPath) {
+        habitsViewModel.countUp(indexPath)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+
+    private func countDown(indexPath: NSIndexPath) {
+        habitsViewModel.countDown(indexPath)
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
 
     private func deleteRowWithConfirmation(indexPath: NSIndexPath) {

@@ -16,9 +16,25 @@ class HabitsViewModel: NSObject {
         }
     }
 
+    func countUp(indexPath: NSIndexPath) {
+        editHabit(indexPath) { habit in habit.count = Int(habit.count) + 1 }
+    }
+
+    func countDown(indexPath: NSIndexPath) {
+        editHabit(indexPath) { habit in habit.count = Int(habit.count) - 1 }
+    }
+
     func deleteHabit(indexPath: NSIndexPath) {
+        editHabit(indexPath) {
+            habit in
+            habit.MR_deleteEntity()
+            return
+        }
+    }
+
+    private func editHabit(indexPath: NSIndexPath, block: Habit -> ()) {
         let habit = fetchedResultsController.objectAtIndexPath(indexPath) as Habit
-        habit.MR_deleteEntity()
+        block(habit)
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
         fetch()
     }
