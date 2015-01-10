@@ -5,6 +5,8 @@ class EditHabitViewController: UIViewController {
     let rowHeight = CGFloat(44.0)
     let editHabitViewModel: EditHabitViewModel
     let triggerTextField = UITextField()
+    let habitTextField = UITextField()
+    let saveButton = UIBarButtonItem()
 
     override convenience init() {
         self.init(editHabitViewModel: EditHabitViewModel())
@@ -33,6 +35,7 @@ class EditHabitViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         triggerTextField.text = editHabitViewModel.triggerName
+        setEnabledToSaveButton()
     }
 
     // MARK: trigger
@@ -87,26 +90,26 @@ class EditHabitViewController: UIViewController {
             NSLayoutConstraint(item: label, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0)
             ])
 
-        let textField = UITextField()
-        textField.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.lightGrayColor().CGColor
-        textField.text = editHabitViewModel.habitName
-        textField.leftViewMode = .Always
-        textField.leftView = UIView(frame: CGRectMake(0, 0, 15, textField.bounds.height))
+        habitTextField.setTranslatesAutoresizingMaskIntoConstraints(false)
+        habitTextField.layer.borderWidth = 1
+        habitTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        habitTextField.text = editHabitViewModel.habitName
+        habitTextField.leftViewMode = .Always
+        habitTextField.leftView = UIView(frame: CGRectMake(0, 0, 15, habitTextField.bounds.height))
 
-        view.addSubview(textField)
+        view.addSubview(habitTextField)
         view.addConstraints([
-            NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 3.0),
-            NSLayoutConstraint(item: textField, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: textField, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 4.0),
-            NSLayoutConstraint(item: textField, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: habitTextField, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 3.0),
+            NSLayoutConstraint(item: habitTextField, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: habitTextField, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: rowHeight * 4.0),
+            NSLayoutConstraint(item: habitTextField, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0)
             ])
-        textField.addTarget(self, action: Selector("habitChanged:"), forControlEvents: .EditingChanged)
+        habitTextField.addTarget(self, action: Selector("habitChanged:"), forControlEvents: .EditingChanged)
     }
 
     func habitChanged(textField: UITextField) {
         editHabitViewModel.habitName =  textField.text
+        setEnabledToSaveButton()
     }
 
     // MARK: cancel button
@@ -121,11 +124,19 @@ class EditHabitViewController: UIViewController {
 
     // MARK: save button
     private func loadSaveButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: Selector("saveButtonTapped"))
+        saveButton.title = NSLocalizedString("Save", comment: "")
+        saveButton.style = .Plain
+        saveButton.target = self
+        saveButton.action = Selector("saveButtonTapped")
+        navigationItem.rightBarButtonItem = saveButton
     }
 
     func saveButtonTapped() {
         editHabitViewModel.save()
         dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func setEnabledToSaveButton() {
+        saveButton.enabled = !(triggerTextField.text.isEmpty || habitTextField.text.isEmpty)
     }
 }
