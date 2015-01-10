@@ -57,8 +57,8 @@ class MainViewController: UITableViewController {
         let habit = habitsViewModel.fetchedResultsController.objectAtIndexPath(indexPath) as Habit
         let editHabitViewModel = EditHabitViewModel(habit: habit)
         RMUniversalAlert.showActionSheetInViewController(self,
-            withTitle: "",
-            message: "",
+            withTitle: habit.trigger,
+            message: habit.name,
             cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
             destructiveButtonTitle: nil,
             otherButtonTitles: [NSLocalizedString("Edit", comment: ""), NSLocalizedString("Delete", comment: "")],
