@@ -12,6 +12,7 @@
 		8010AE681A550693004FF986 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8010AE671A550693004FF986 /* Images.xcassets */; };
 		8010AE6B1A550693004FF986 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8010AE691A550693004FF986 /* LaunchScreen.xib */; };
 		8010AE771A550693004FF986 /* HabitizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010AE761A550693004FF986 /* HabitizeTests.swift */; };
+		803C5CC41A6566A100D62BD5 /* SheetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C5CC31A6566A100D62BD5 /* SheetAction.swift */; };
 		805B142B1A5AE3BA003967FD /* EditTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B142A1A5AE3BA003967FD /* EditTextFieldViewController.swift */; };
 		80B528961A5507C600172517 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B528951A5507C600172517 /* MainViewController.swift */; };
 		80C0424E1A559A290054425B /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C0424D1A559A290054425B /* EditHabitViewController.swift */; };
@@ -43,6 +44,7 @@
 		8010AE701A550693004FF986 /* HabitizeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabitizeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8010AE751A550693004FF986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8010AE761A550693004FF986 /* HabitizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitizeTests.swift; sourceTree = "<group>"; };
+		803C5CC31A6566A100D62BD5 /* SheetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetAction.swift; sourceTree = "<group>"; };
 		805B142A1A5AE3BA003967FD /* EditTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTextFieldViewController.swift; sourceTree = "<group>"; };
 		80B528951A5507C600172517 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../habitize/Habitize/MainViewController.swift; sourceTree = "<group>"; };
 		80C0424D1A559A290054425B /* EditHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				80C0424F1A56CE4C0054425B /* Settings.bundle */,
 				80C042581A56DDFE0054425B /* Localizable.strings */,
 				80C0425C1A5762460054425B /* Habitize-Bridging-Header.h */,
+				803C5CC31A6566A100D62BD5 /* SheetAction.swift */,
 			);
 			path = Habitize;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80C0426C1A5849B30054425B /* Habit.swift in Sources */,
+				803C5CC41A6566A100D62BD5 /* SheetAction.swift in Sources */,
 				80C0424E1A559A290054425B /* EditHabitViewController.swift in Sources */,
 				80C0426E1A584C8D0054425B /* HabitsViewModel.swift in Sources */,
 				80C042681A57D2940054425B /* EditHabitViewModel.swift in Sources */,

@@ -56,25 +56,37 @@ class MainViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let habit = habitsViewModel.fetchedResultsController.objectAtIndexPath(indexPath) as Habit
         let editHabitViewModel = EditHabitViewModel(habit: habit)
+
+        var buttonActions = [SheetAction]()
+        buttonActions.append(SheetAction(
+            title: NSLocalizedString("Edit", comment: ""),
+            action: {self.presentHabitViewController(editHabitViewModel)}
+            ))
+        buttonActions.append(SheetAction(
+            title: NSLocalizedString("Count Up", comment: ""),
+            action: {self.countUp(indexPath)}
+            ))
+        if habit.count.integerValue > 0 {
+            buttonActions.append(SheetAction(
+                title: NSLocalizedString("Count Down", comment: ""),
+                action: {self.countDown(indexPath)}
+                ))
+        }
+        buttonActions.append(SheetAction(
+            title: NSLocalizedString("Delete", comment: ""),
+            action: {self.deleteRowWithConfirmation(indexPath)}
+            ))
+
         RMUniversalAlert.showActionSheetInViewController(self,
             withTitle: habit.trigger,
             message: habit.name,
             cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
             destructiveButtonTitle: nil,
-            otherButtonTitles: [NSLocalizedString("Edit", comment: ""), NSLocalizedString("Count Up", comment: ""), NSLocalizedString("Count Down", comment: ""), NSLocalizedString("Delete", comment: "")],
+            otherButtonTitles: buttonActions.map({action in action.title}),
             tapBlock: {
                 index in
-                switch index {
-                case UIAlertControllerBlocksFirstOtherButtonIndex:
-                    self.presentHabitViewController(editHabitViewModel)
-                case UIAlertControllerBlocksFirstOtherButtonIndex + 1:
-                    self.countUp(indexPath)
-                case UIAlertControllerBlocksFirstOtherButtonIndex + 2:
-                    self.countDown(indexPath)
-                case UIAlertControllerBlocksFirstOtherButtonIndex + 3:
-                    self.deleteRowWithConfirmation(indexPath)
-                default:
-                    break
+                if index >= UIAlertControllerBlocksFirstOtherButtonIndex {
+                    buttonActions[index - UIAlertControllerBlocksFirstOtherButtonIndex].action()
                 }
                 return
         })
