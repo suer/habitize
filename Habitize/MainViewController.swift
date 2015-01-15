@@ -82,7 +82,7 @@ class MainViewController: UITableViewController {
             message: habit.name,
             cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
             destructiveButtonTitle: nil,
-            otherButtonTitles: buttonActions.map({action in action.title}),
+            otherButtonTitles: buttonActions.map {action in action.title},
             tapBlock: {
                 index in
                 if index >= UIAlertControllerBlocksFirstOtherButtonIndex {
@@ -114,8 +114,7 @@ class MainViewController: UITableViewController {
             message: NSLocalizedString("Are you sure you want to delete it?", comment: ""),
             cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
             destructiveButtonTitle: nil,
-            otherButtonTitles: [NSLocalizedString("Yes", comment: "")],
-            tapBlock: {
+            otherButtonTitles: [NSLocalizedString("Yes", comment: "")]) {
                 index in
                 switch index {
                 case UIAlertControllerBlocksFirstOtherButtonIndex:
@@ -123,8 +122,7 @@ class MainViewController: UITableViewController {
                 default:
                     break
                 }
-            }
-        )
+        }
     }
 
     private func deleteRow(indexPath: NSIndexPath) {
