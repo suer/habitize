@@ -82,14 +82,13 @@ class MainViewController: UITableViewController {
             message: habit.name,
             cancelButtonTitle: NSLocalizedString("Cancel", comment: ""),
             destructiveButtonTitle: nil,
-            otherButtonTitles: buttonActions.map {action in action.title},
-            tapBlock: {
+            otherButtonTitles: buttonActions.map {action in action.title}) {
                 index in
                 if index >= UIAlertControllerBlocksFirstOtherButtonIndex {
                     buttonActions[index - UIAlertControllerBlocksFirstOtherButtonIndex].action()
                 }
                 return
-        })
+        }
     }
 
     func presentHabitViewController(editHabitViewModel: EditHabitViewModel) {
